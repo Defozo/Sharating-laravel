@@ -25,13 +25,13 @@ class LoginController extends Controller
         $hashedId = $result['hashedId'];
         $accessToken = $result['accessToken'];
         $refreshToken = $result['refreshToken'];
-        dd($hashedId);
-        $hash = Hash::get('hash', $hashedId)->first();
+
+        $hash = Hash::where('hash', $hashedId)->first();
 
         if ($hash === null) {
-            $user = User::create();
+            $user = User::create([]);
 
-            Hash::create([
+            Hash::forceCreate([
                 'user_id' => $user->id,
                 'hash' => $hashedId,
             ]);
