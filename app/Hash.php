@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Email extends Model
+class Hash extends Model
 {
     //
 }
