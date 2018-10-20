@@ -15,7 +15,13 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
+            $table->double('rating');
+            $table->unsignedInteger('account_id');
+            $table->string('body');
+            $table->string('type');
             $table->timestamps();
+
+            $table->foreign('account_id')->references('id')->on('accounts');
         });
     }
 
