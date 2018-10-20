@@ -42,11 +42,13 @@ class LoginController extends Controller
             ]);
 
             return [
+                'user_id' => $user->id,
                 'authorized_providers' => [$provider],
             ];
         }
 
         return [
+            'user_id' => $hash->user_id,
             'authorized_providers' => Account::where('user_id', $hash->user_id)->get()->map(function ($account) {
                 return $account['provider'];
             })->unique()->toArray(),
