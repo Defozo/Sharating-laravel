@@ -17,4 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::middleware('auth:api')->get('/{customer}/user/{email}', 'ReviewsController@sendReviews');
+
 Route::get('/login/{provider}', 'LoginController@login');
+
