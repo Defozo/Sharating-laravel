@@ -8,7 +8,7 @@ use Zttp\Zttp;
 
 class AllegroProvider
 {
-    public function getHashedId($code)
+    public function getResult($code)
     {
         $response = Zttp::withHeaders([
             'Authorization' => 'Basic ' . base64_encode(config('services.oauth.allegro.client_id') . ':' . config('services.oauth.allegro.client_secret')),
