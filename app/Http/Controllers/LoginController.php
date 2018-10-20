@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Hash;
+use App\User;
 use App\Account;
 use Illuminate\Http\Request;
 use Facades\App\OAuthProviders\Provider;
@@ -23,7 +25,7 @@ class LoginController extends Controller
         $hashedId = $result['hashedId'];
         $accessToken = $result['accessToken'];
         $refreshToken = $result['refreshToken'];
-
+        dd($hashedId);
         $hash = Hash::get('hash', $hashedId)->first();
 
         if ($hash === null) {
