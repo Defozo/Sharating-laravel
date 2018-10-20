@@ -17,7 +17,6 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('provider');
-            $table->string('email');
             $table->string('access_token');
             $table->string('refresh_token');
             $table->timestamps();

@@ -42,6 +42,7 @@ return [
 
     'oauth' => [
         'allegro' => [
+            'base_url' => env('ALLEGRO_BASE_URL'),
             'client_id' => env('ALLEGRO_CLIENT_ID'),
             'client_secret' => env('ALLEGRO_CLIENT_SECRET'),
             'redirect' => env('ALLEGRO_REDIRECT'),
