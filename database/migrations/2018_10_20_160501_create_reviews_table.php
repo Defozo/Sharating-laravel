@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->double('rating');
             $table->unsignedInteger('account_id');
-            $table->string('body');
+            $table->string('body')->nullable();
             $table->string('type');
             $table->timestamps();
 
