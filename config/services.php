@@ -48,4 +48,11 @@ return [
         ],
     ],
 
+    'blockchain' => [
+        'endpoints' => [
+            'get_transaction_hash' => 'https://blockchain.sharatin.gq/api/v1/blockchain/',
+        ],
+    ],
+
+
 ];
