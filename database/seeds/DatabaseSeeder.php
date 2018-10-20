@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         \App\Account::forceCreate([
             'user_id' => '1',
             'provider' => 'Mercari',
-            'email' => 'hashmail',
             'access_token' => 'token',
             'refresh_token' => 'token',
         ]);
@@ -24,7 +23,6 @@ class DatabaseSeeder extends Seeder
         \App\Account::forceCreate([
             'user_id' => '1',
             'provider' => 'Allegro',
-            'email' => 'hashmail2',
             'access_token' => 'token2',
             'refresh_token' => 'token2',
         ]);
@@ -33,14 +31,14 @@ class DatabaseSeeder extends Seeder
             'id' => '1',
         ]);
 
-        \App\Email::forceCreate([
+        \App\Hash::forceCreate([
             'user_id' => '1',
-            'email' => 'hashmail',
+            'hash' => 'hashmail',
         ]);
 
-        \App\Email::forceCreate([
+        \App\Hash::forceCreate([
             'user_id' => '1',
-            'email' => 'hashmail2',
+            'hash' => 'hashmail2',
         ]);
 
         \App\Review::forceCreate([
