@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Email;
 use App\Review;
 use App\Account;
+use Illuminate\Http\Request;
+use Facades\App\OAuthProviders\Provider;
 
 class ReviewsController extends Controller
 {
+    public function fetch()
+    {
+        Account::all()->each(function ($account) {
+            Provider::driver($account->provider)->fetchReviews($account);
+        });
+    }
+
     public function sendReviews(Request $request, $customer, $email)
     {
         // check if user is correct

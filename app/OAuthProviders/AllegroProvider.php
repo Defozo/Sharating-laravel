@@ -8,6 +8,25 @@ use Zttp\Zttp;
 
 class AllegroProvider
 {
+    public function getUserInfoFromToken($token)
+    {
+        $tokenMiddlePart = explode('.', $token)[1];
+        $payload = json_decode(base64_decode($tokenMiddlePart));
+        return $payload;
+    }
+
+    public function fetchReviews()
+    {
+        // $response = Zttp::withHeaders([
+        //     'Authorization' => 'Bearer ' . $account->access_token,
+        //     'Accept' => 'application/vnd.allegro.public.v1+json',
+        // ])->get(config('services.oauth.allegro.base_api_url') . '/sale/user-ratings?' . http_build_query([
+        //     'user.id' => $this->getUserInfoFromToken($account->access_token)->user_name,
+        // ]));
+
+        // dd($response);
+    }
+
     public function getResult($code)
     {
         $response = Zttp::withHeaders([
@@ -28,9 +47,7 @@ class AllegroProvider
             abort(500, 'Something went wrong with the provider response.');
         }
 
-        $token = $data['access_token'];
-        $tokenMiddlePart = explode('.', $token)[1];
-        $payload = json_decode(base64_decode($tokenMiddlePart));
+        $payload = $this->getUserInfoFromToken($data['access_token']);
 
         return [
             'hashedId' => hash('sha3-512', $payload->user_name),
